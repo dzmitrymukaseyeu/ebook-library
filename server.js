@@ -1,3 +1,4 @@
+const path = require('path');
 const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
@@ -6,6 +7,8 @@ const checkDbConnection = require('./BACKEND/helpers/check-db-connection');
 const checkForToken = require('./BACKEND/helpers/check-for-token');
 const PORT = process.env.PORT || 5000;
 const app = express();
+const { projects } = require('./angular.json');
+const distPath = projects['ebook-library'].architect.build.options.outputPath;
 
 const signUpHandlerPost = require('./BACKEND/api-routes/sign-up/post');
 const signInHandlerPost = require('./BACKEND/api-routes/sign-in/post');
@@ -38,6 +41,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(checkDbConnection);
 app.use(checkForToken);
+app.use(express.static(path.join(__dirname, distPath)));
 
 // Auth routes
 app.post('/api/auth/sign-up', signUpHandlerPost);
@@ -56,6 +60,11 @@ app.post('/api/books', bookHandlerPost);
 // Favorites routes
 app.post('/api/favorites', favoritesHandlerPost)
 app.get('/api/favorites', favoritesHandlerGet);
+
+// index.html route
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, distPath + '/index.html'));
+});
 
 app.listen(PORT, () =>
     console.log('Server is running on port ' + PORT)

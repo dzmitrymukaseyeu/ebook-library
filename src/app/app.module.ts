@@ -24,6 +24,7 @@ import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 import { HeaderComponent } from './components/header/header.component';
 import { PreloaderComponent } from './components/preloader/preloader/preloader.component';
 import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SidenavListComponent } from './components/sidenav-list/sidenav-list.com
     HomeComponent,
     HeaderComponent,
     PreloaderComponent,
-    SidenavListComponent
+    SidenavListComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,89 @@
+<section class="s-signup">
+  <div class="container">
+    <div class="b-signup">
+      <form
+        action="#"
+        name="signUp"
+        class="f-signup"
+        [formGroup]="signUpForm"
+        (submit)="onSubmit($event)"
+      >
+        <h2 class="f-signup__title">Create your account</h2>
+        <mat-form-field class="f-signup__row">
+          <mat-label>First Name</mat-label>
+          <input
+            type="text"
+            name="firstName"
+            formControlName="firstName"
+            matInput
+            placeholder="Enter your First Name"
+          >
+          <mat-error *ngIf="signUpForm.controls.firstName.hasError('required')">
+            First Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="f-signup__row">
+          <mat-label>Last Name</mat-label>
+          <input
+            type="text"
+            name="lastName"
+            formControlName="lastName"
+            matInput
+            placeholder="Enter your Last Name"
+          >
+          <mat-error *ngIf="signUpForm.controls.lastName.hasError('required')">
+            Last Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="f-signup__row">
+          <mat-label>E-mail address</mat-label>
+          <input
+            type="email"
+            name="email"
+            formControlName="email"
+            matInput
+            placeholder="Enter your e-mail address"
+          >
+          <mat-error *ngIf="signUpForm.controls.email.hasError('required')">
+            E-mail is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="signUpForm.controls.email.hasError('pattern')">
+            Enter correct e-mail
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="f-signup__row">
+          <mat-label>Password</mat-label>
+          <input
+            type="password"
+            name="password"
+            formControlName="password"
+            matInput
+            placeholder="Enter your password"
+          >
+          <mat-error *ngIf="signUpForm.controls.password.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="signUpForm.controls.password.hasError('minlength')">
+            Password must contain at least 8 characters
+          </mat-error>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="warn"
+          type="submit"
+          class="f-signup__btn"
+          [disabled] = "!this.signUpForm.valid"
+        >
+          Register
+        </button>
+        <p class="f-signup__link">Have an account?
+          <a
+            routerLinkActive="_active"
+            [routerLinkActiveOptions]="{exact:true}"
+            routerLink="/auth/sign-in">Log in now
+        </a>
+        </p>
+      </form>
+    </div>
+  </div>
+</section>

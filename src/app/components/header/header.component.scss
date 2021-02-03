@@ -1,0 +1,92 @@
+@import "abstracts/mixins";
+
+.header-content {
+  padding: 30px 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  align-items: center;
+}
+
+.b-nav {
+  display: flex;
+
+  &__menu {
+    display: none;
+  }
+}
+
+.l-nav {
+  &__item + &__item {
+    margin-left: 100px;
+  }
+
+  &__item {
+    &-link {
+      position: relative;
+      padding: 5px 0;
+
+      &::after {
+        position: absolute;
+        content: "";
+        height: 3px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #3f51b5;
+        transition: transform 0.2s ease-out;
+        transform: scaleX(0);
+        transform-origin: 0;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+      }
+
+      &._active::after {
+        position: absolute;
+        content: "";
+        height: 3px;
+        bottom: 0;
+        left: 0;
+        background-color: #3f51b5;
+        transform: scaleX(1);
+        transition: all 0.2s ease-in-out;
+      }
+    }
+  }
+}
+
+.b-auth {
+  display: flex;
+  align-items: center;
+
+  &__link {
+    display: flex;
+    align-items: center;
+
+    &-user {
+      margin-left: 13px;
+    }
+
+    & span {
+      font-size: 16px;
+    }
+  }
+
+  &__link + &__link {
+    margin-left: 15px;
+  }
+}
+
+@include mobile() {
+  .l-nav {
+    display: none;
+  }
+
+  .b-nav {
+    &__menu {
+      display: block;
+    }
+  }
+}

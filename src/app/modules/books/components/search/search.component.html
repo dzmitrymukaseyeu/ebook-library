@@ -1,0 +1,54 @@
+<form
+  action="#"
+  name="searchBook"
+  class="f-searchBook"
+  [formGroup]="searchBookForm"
+  (submit)="searchBookSubmit($event)"
+>
+  <mat-form-field class="f-searchBook__title">
+    <mat-label>Search by title</mat-label>
+    <input
+      type="text"
+      name="title"
+      formControlName="title"
+      matInput
+      placeholder="Enter title"
+      [(ngModel)]="value"
+    >
+    <button
+      mat-button
+      *ngIf="value"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="value=''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field
+    appearance="fill"
+    class="f-searchBook__genre"
+  >
+    <mat-label>Select a genre</mat-label>
+    <mat-select
+      type="text"
+      name="genre"
+      formControlName="genre"
+      [(value)]="selectedGenre"
+    >
+      <mat-option [value]="genre.value" *ngFor="let genre of bookGenres">
+        {{genre.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    class="f-searchBook__btn"
+  >
+    <mat-icon>search</mat-icon>
+    <span>Search</span>
+  </button>
+</form>

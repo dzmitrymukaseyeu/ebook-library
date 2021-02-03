@@ -1,0 +1,67 @@
+<section class="s-signin">
+  <div class="container">
+    <div class="b-signin">
+      <form
+        action="#"
+        name="signIn"
+        class="f-signin"
+        [formGroup]="signInForm"
+        (submit)="onSubmit($event)"
+      >
+        <h2 class="f-signin__title">Log in to your account</h2>
+        <mat-form-field class="f-signin__row">
+          <mat-label>E-mail address</mat-label>
+          <input
+            type="email"
+            name="email"
+            formControlName="email"
+            matInput
+            placeholder="Enter your e-mail address"
+          >
+          <mat-error *ngIf="signInForm.controls.email.hasError('required')">
+            E-mail is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="signInForm.controls.email.hasError('pattern')">
+            Enter correct e-mail
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="f-signin__row">
+          <mat-label>Password</mat-label>
+          <input
+            type="password"
+            name="password"
+            formControlName="password"
+            matInput
+            placeholder="Enter your password"
+          >
+          <mat-error *ngIf="signInForm.controls.password.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="signInForm.controls.password.hasError('minlength')">
+            Password must contain at least 8 characters
+          </mat-error>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="warn"
+          type="submit"
+          class="f-signin__btn"
+          [disabled] = "!this.signInForm.valid"
+        >
+          Log in
+        </button>
+        <p class="f-signin__link">
+          Don't have an account?
+          <a
+            routerLinkActive="_active"
+            [routerLinkActiveOptions]="{exact:true}"
+            routerLink="/auth/sign-up"
+          >
+            Sign Up
+          </a>
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+

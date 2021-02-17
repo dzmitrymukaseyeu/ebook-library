@@ -1,4 +1,6 @@
 .footer {
+  flex-shrink: 0;
+
   &__link {
     padding: 10px 0;
     display: flex;

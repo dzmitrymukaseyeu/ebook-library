@@ -1,5 +1,9 @@
 @import "abstracts/mixins";
 
+.header {
+  flex-shrink: 0;
+}
+
 .header-content {
   padding: 30px 0;
   display: flex;

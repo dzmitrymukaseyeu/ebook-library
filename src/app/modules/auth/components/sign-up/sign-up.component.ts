@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService, PreloaderService } from '@app/services';
 import { Subject } from 'rxjs';
-import { finalize, takeUntil} from 'rxjs/operators'
+import { finalize, takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-sign-up',

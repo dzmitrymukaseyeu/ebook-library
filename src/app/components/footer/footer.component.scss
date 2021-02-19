@@ -7,24 +7,11 @@
     justify-content: space-between;
     align-items: center;
 
-    &-user {
+    &-logo {
       &-img {
-        width: 26px;
+        width: 28px;
         vertical-align: middle;
       }
-    }
-
-    &-school {
-      display: flex;
-      align-items: center;
-
-      &-img {
-        width: 70px;
-        vertical-align: middle;
-      }
-    }
-
-    &-year {
     }
   }
 }
